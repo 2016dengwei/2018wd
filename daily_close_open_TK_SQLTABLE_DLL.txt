@@ -1,0 +1,19 @@
+drop table sd_tk_realtime_monitor_complete;
+drop table sd_tk_realtime_monitor_open;
+
+create table sd_tk_realtime_monitor_complete
+(TKNum nvarchar(25), PrimaryResource nvarchar(50),  Status nvarchar(50), 
+ CompletedDateTime nvarchar(60),
+Queue nvarchar(50), Issue nvarchar(50), SubIssue nvarchar(50), AccountName nvarchar(50),
+Year nvarchar(6), Month nvarchar(6), Day nvarchar(6), WeekDay nvarchar(6), WKofY nvarchar(6), DayofY nvarchar(6), CompletedHr nvarchar(6));
+go
+
+
+create table sd_tk_realtime_monitor_open
+(TKNum nvarchar(25), PrimaryResource nvarchar(50),  Status nvarchar(50), 
+ LastUpdate nvarchar(60),
+Queue nvarchar(50), Issue nvarchar(50), SubIssue nvarchar(50), AccountName nvarchar(50),
+Year nvarchar(6), Month nvarchar(6), Day nvarchar(6), WeekDay nvarchar(6), 
+WKofY nvarchar(6), DayofY nvarchar(6), updateHr nvarchar(6),
+DueDate nvarchar(60), DueDay nvarchar(6), DueMonth nvarchar(6), DueYear nvarchar(6), DueDayofY nvarchar(6));
+go
