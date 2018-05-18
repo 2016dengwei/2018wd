@@ -5,6 +5,7 @@ input data to sql-server for closed and open tickets for current day only
 powerbi will display graphs based on these two tables.
 
 this is backup file, no user/pwd.
+upload to github @ 18/05/2018
 
 @author: Wei Deng
 """
