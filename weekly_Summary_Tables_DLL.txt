@@ -1,0 +1,46 @@
+drop table sd_tk_wk_dailyOpen;
+drop table sd_tk_wk_SameDayCompleted;
+drop table sd_tk_wk_assigned;
+drop table sd_tk_wk_Completed;
+drop table sd_tk_SLA_F;
+drop table sd_tk_workedHrs;
+
+create table sd_tk_wk_dailyOpen(
+TKNum nvarchar(25), PrimaryResource nvarchar(50),  Status nvarchar(50), 
+Issue nvarchar(50), SubIssue nvarchar(50), 
+Year nvarchar(6), Month nvarchar(6), Day nvarchar(6), WeekDay nvarchar(6), 
+WKofY nvarchar(6), DayofY nvarchar(6));
+go
+
+create table sd_tk_wk_SameDayCompleted(
+TKNum nvarchar(25), PrimaryResource nvarchar(50),
+CompletedDateTime nvarchar(60),Issue nvarchar(50), SubIssue nvarchar(50), 
+Year nvarchar(6), Month nvarchar(6), Day nvarchar(6), WeekDay nvarchar(6), WKofY nvarchar(6), DayofY nvarchar(6));
+go
+
+
+create table sd_tk_wk_assigned(
+TKNum nvarchar(25), PrimaryResource nvarchar(50),firstAssignedDate nvarchar(60),
+Source nvarchar(30),Queue nvarchar(50), Issue nvarchar(50), SubIssue nvarchar(50),
+AccountName nvarchar(50),Year nvarchar(6), Month nvarchar(6), Day nvarchar(6), 
+WeekDay nvarchar(6), WKofY nvarchar(6), DayofY nvarchar(6));
+go
+
+create table sd_tk_wk_Completed(
+TKNum nvarchar(25), PrimaryResource nvarchar(50), CompletedDateTime nvarchar(60),
+Issue nvarchar(50), SubIssue nvarchar(50), AccountName nvarchar(50),
+Year nvarchar(6), Month nvarchar(6), Day nvarchar(6), WeekDay nvarchar(6), WKofY nvarchar(6), DayofY nvarchar(6));
+
+drop table sd_tk_SLA_F;
+
+create table sd_tk_SLA_F(
+TKNum nvarchar(25),AccountName nvarchar(50),Issue nvarchar(50), SubIssue nvarchar(50),
+Year nvarchar(6), Month nvarchar(6), Day nvarchar(6), WeekDay nvarchar(6), WKofY nvarchar(6), DayofY nvarchar(6));
+go
+
+
+create table sd_tk_workedHrs(
+TKNum nvarchar(25), Resource nvarchar(50),Issue nvarchar(50), SubIssue nvarchar(50), AccountName nvarchar(50),
+WorkedDate nvarchar(60), HoursWorked decimal(6,2), Queue nvarchar(50),
+Year nvarchar(6), Month nvarchar(6), Day nvarchar(6), WeekDay nvarchar(6), WKofY nvarchar(6), DayofY nvarchar(6));
+go
