@@ -1,0 +1,35 @@
+##load csv file and create node, properties and relationships. using 'merge' avoid to create duplicate nodes
+
+load csv with headers from 'file:/bc-g-m.csv' as test
+merge (Group:Group {gid: test.gid, gname=test.gname,gmembers=test.membercount})
+merge (Member:Member {uid: test.memberID, mname:test.membername})
+create (Group)-[:hasMember]->(Member)
+
+##return result when relationships met conditions (e.g, count>x)
+match (a:Group) where a.gmembers>1
+with a 
+match (b:Member)-[r:hasMember]-(a) 
+with b, collect(a) as y, count(r) as x 
+where x>3 and x<10
+return b, y
+
+#python scripts for connect with SQL server express:
+
+def connectToSQL():
+    conn= pyodbc.connect('Driver={SQL Server};'
+                         'Server=Gerry-Laptop\SQLEXPRESS;'
+                         'Database=TBX;'
+                         'Trusted_Connection=yes;')
+    return conn
+
+def readDataTest(conn):
+    cursor=conn.cursor()
+    cursor.execute("select * from [dbo].[testTable]") 
+    while 1:
+        row=cursor.fetchone()
+        if not row:
+            break
+        print(row.tableName)
+    conn.close() 
+	
+
