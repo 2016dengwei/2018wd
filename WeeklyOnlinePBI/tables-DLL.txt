@@ -1,0 +1,50 @@
+use WeeklyTKSummary
+
+drop table idleNotification;
+drop table AssignedTickets;
+drop table CompletedTickets;
+drop table WorkedHours;
+drop table SLA_No;
+drop table DocControl;
+
+create table idleNotification (
+sentDate nvarchar(15),Resource nvarchar(70), TKNum nvarchar(30),TKTitle nvarchar(700),IdleHours nvarchar(4)
+);
+go
+
+
+create table AssignedTickets(
+FullName nvarchar(70),	TicketNumber nvarchar(30),	TKTitle nvarchar(700), AccountName nvarchar(70),
+SLAStartDateTime nvarchar(100),	SLAFirstResponseDate nvarchar(100),	FirstAssigned nvarchar(100),	Issue nvarchar(70),	SubIssue nvarchar (70),	Status nvarchar(70),
+Queue nvarchar(70)
+
+);
+go
+
+
+create table CompletedTickets (
+FullName nvarchar(70),	TicketNumber nvarchar(30),	TicketTitle nvarchar(1000),	IssueType nvarchar(70),	SubIssueType nvarchar(70),
+CreateDateTime nvarchar(100),	FirstAssignedDateTime nvarchar(100),	SLAFirstResponseDateTime nvarchar(100),	SLAResolvedDateTime nvarchar(100),	
+Status nvarchar(70),	Account nvarchar(70),	Queue nvarchar(70)
+
+);
+go
+
+create table WorkedHours (
+FullName nvarchar(70),	HoursWorked	decimal(6,2), ProjectName nvarchar(70),	ProjectStatus nvarchar(70),	AccountName	nvarchar(70),
+TaskorTicketTitle nvarchar(700),	TaskTicketNumber nvarchar(30),	WorkedDate nvarchar(70),
+QueueName nvarchar(70),	Issue nvarchar(70),	SubIssue nvarchar(70)
+
+);
+go
+
+create table SLA_No (
+TKNumber nvarchar(30),AccountName nvarchar(80),Priority nvarchar(40),Status nvarchar(70),ContactName nvarchar(70),
+Source nvarchar(80),Issue nvarchar(80),SubIssue nvarchar(80),FRDateTime nvarchar(100),FRDueDateTime nvarchar(100),
+FR_SLAMet int,SLVDateTime nvarchar(100),SLVDueDateTime nvarchar(100),ActualSLAMetTickets int,QueueID nvarchar(30),Final int
+);
+go 
+
+
+create table DocControl (DocControlItem nvarchar(50), Value nvarchar (100));
+go
